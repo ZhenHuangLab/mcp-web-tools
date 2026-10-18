@@ -1,0 +1,13 @@
+{
+  "$schema": "../node_modules/wrangler/config-schema.json",
+  "name": "public-curl-worker",
+  "main": "src/index.js",
+  "compatibility_date": "2026-10-12",
+  // Requests to this account's own zones go through Cloudflare's front door like any internet
+  // request, so this public service cannot bypass security settings on other hostnames.
+  "compatibility_flags": ["global_fetch_strictly_public"],
+  // Use your account's workers.dev subdomain. A custom domain is optional.
+  "workers_dev": true,
+  "preview_urls": false,
+  "observability": { "enabled": true }
+}

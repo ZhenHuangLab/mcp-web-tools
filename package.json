@@ -1,0 +1,32 @@
+{
+  "name": "mcp-web-tools",
+  "version": "2.0.0",
+  "description": "Self-hosted web reading and HTTP request MCP servers on Cloudflare Workers.",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ZhenHuangLab/mcp-web-tools.git"
+  },
+  "homepage": "https://github.com/ZhenHuangLab/mcp-web-tools#readme",
+  "bugs": {
+    "url": "https://github.com/ZhenHuangLab/mcp-web-tools/issues"
+  },
+  "engines": {
+    "node": ">=22.0.0"
+  },
+  "scripts": {
+    "dev:read": "wrangler dev -c webpage-fetcher/wrangler.jsonc",
+    "dev:curl": "wrangler dev -c public-curl-worker/wrangler.jsonc",
+    "build:read": "wrangler deploy --dry-run -c webpage-fetcher/wrangler.jsonc",
+    "build:curl": "wrangler deploy --dry-run -c public-curl-worker/wrangler.jsonc",
+    "check": "npm run build:read && npm run build:curl",
+    "deploy:read": "wrangler deploy -c webpage-fetcher/wrangler.jsonc",
+    "deploy:curl": "wrangler deploy -c public-curl-worker/wrangler.jsonc",
+    "deploy": "npm run deploy:read && npm run deploy:curl"
+  },
+  "devDependencies": {
+    "wrangler": "^4.151.1"
+  }
+}
